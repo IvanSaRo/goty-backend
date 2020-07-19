@@ -34,4 +34,18 @@ const db = admin.firestore();
  
  //Express
 
+ const app = express();
+ app.use( cors({ origin: true })); //así permitimos cualquier petición de cualquier dominio
+
+ app.get("/goty", async(req, res) => {
+  const gotyRef  = db.collection("goty");
+  const docsSnap = await gotyRef.get();
+  const games    = docsSnap.docs.map( doc => doc.data() );
+
+  res.json( games );
+ })
+
  
+
+
+ export const api = functions.https.onRequest( app );
