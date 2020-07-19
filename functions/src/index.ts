@@ -69,7 +69,7 @@ const db = admin.firestore();
   }
 
   
- });//1
+ });
 
 
  export const api = functions.https.onRequest( app )
