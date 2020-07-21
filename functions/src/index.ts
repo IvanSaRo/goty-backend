@@ -51,7 +51,7 @@ const db = admin.firestore();
   const gameRef  = db.collection("goty").doc( id );
   const gameSnap = await gameRef.get();
 
-  if (!gameSnap.exists) {
+  if ( !gameSnap.exists ) {
     res.status(404).json({
       ok: false,
       message: "No existe juego con este ID " + id
